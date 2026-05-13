@@ -1,0 +1,6 @@
+{
+    "RelayUrl": "wss//neovision-relay.onrender.com/ws",
+    "AgentVersion": "1.0.0",
+    "HeartbeatIntervalSeconds": 30,
+    "ReconnectDelaySeconds": 5
+}
