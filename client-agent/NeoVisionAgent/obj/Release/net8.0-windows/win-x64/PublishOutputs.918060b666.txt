@@ -1,0 +1,7 @@
+C:\Users\Pamspc\Documents\NeoVision\NeoVision\client-agent\NeoVisionAgent\publish\NeoVisionAgent.pdb
+C:\Users\Pamspc\Documents\NeoVision\NeoVision\client-agent\NeoVisionAgent\publish\D3DCompiler_47_cor3.dll
+C:\Users\Pamspc\Documents\NeoVision\NeoVision\client-agent\NeoVisionAgent\publish\PenImc_cor3.dll
+C:\Users\Pamspc\Documents\NeoVision\NeoVision\client-agent\NeoVisionAgent\publish\PresentationNative_cor3.dll
+C:\Users\Pamspc\Documents\NeoVision\NeoVision\client-agent\NeoVisionAgent\publish\vcruntime140_cor3.dll
+C:\Users\Pamspc\Documents\NeoVision\NeoVision\client-agent\NeoVisionAgent\publish\wpfgfx_cor3.dll
+C:\Users\Pamspc\Documents\NeoVision\NeoVision\client-agent\NeoVisionAgent\publish\NeoVisionAgent.exe
