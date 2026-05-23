@@ -67,15 +67,26 @@ async function handleConnection(ws, req) {
   sockets.set(socketId, ws);
   logger.debug('WebSocket connected', { socketId, ip: req.socket.remoteAddress });
 
-  ws.on('message', async (raw) => {
-    try {
-      const packet = JSON.parse(raw);
-      await route(ws, packet);
-    } catch (err) {
-      logger.error('WebSocket message error', { socketId, error: err.message });
-      sendError(ws, 'Malformed packet.');
+ ws.on('message', async (raw, isBinary) => {
+  try {
+    // Binary messages are screen frames — relay directly to peer
+    if (isBinary || Buffer.isBuffer(raw)) {
+      if (ws.peerSocketId) {
+        const peer = sockets.get(ws.peerSocketId);
+        if (peer && peer.readyState === peer.OPEN) {
+          peer.send(raw, { binary: true });
+        }
+      }
+      return;
     }
-  });
+
+    const packet = JSON.parse(raw);
+    await route(ws, packet);
+  } catch (err) {
+    logger.error('WebSocket message error', { socketId: ws.socketId, error: err.message });
+    sendError(ws, 'Malformed packet.');
+  }
+});
 
   ws.on('close', () => handleDisconnect(ws));
   ws.on('error', (err) => logger.error('WebSocket error', { socketId, error: err.message }));
